@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>19</java.version>
-		<model-mapper.version>3.0.0</model-mapper.version>
+		<dozer.version>6.4.0</dozer.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,7 +27,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
 		</dependency>
 
 		<!-- Dependência do MySQL -->
@@ -36,11 +41,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
-		<!-- Dependência do ModelMapper (Padrão DTO) -->
+		<!-- Dependência do DozerMapper (Padrão DTO) -->
 		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>${model-mapper.version}</version>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>${dozer.version}</version>
 		</dependency>
 
 		<!-- Dependência do Flyway (Migrations) -->

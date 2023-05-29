@@ -9,9 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        //VIA QUERY PARAM http://localhost:8080/api/pessoa/v1?mediaType=xml
 
         /*
+        //VIA QUERY PARAM http://localhost:8080/api/pessoa/v1?mediaType=xml
         configurer.favorParameter(true)
                 .parameterName("mediaType")
                 .ignoreAcceptHeader(true)
@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .defaultContentType(MediaType.APPLICATION_JSON)
                 .mediaType("json", MediaType.APPLICATION_JSON)
                 .mediaType("xml", MediaType.APPLICATION_XML);
-                */
+        */
 
         //VIA HEADER PARAM http://localhost:8080/api/pessoa/v1
         configurer.favorParameter(false)

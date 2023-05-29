@@ -1,27 +1,30 @@
 package br.com.vitor.cursospring.data.vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
 
-public class PessoaVO implements Serializable {
+@JsonPropertyOrder({"id", "nome", "sobrenome", "endereco", "genero"})
+public class PessoaVO extends RepresentationModel<PessoaVO> implements Serializable {
 
     public PessoaVO() {}
 
-    private Long id;
-
+    @JsonProperty("id")
+    @Mapping("id")
+    private Long key;
     private String nome;
-
     private String sobrenome;
-
     private String endereco;
-
     private String genero;
 
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getNome() {
@@ -63,7 +66,7 @@ public class PessoaVO implements Serializable {
 
         PessoaVO pessoa = (PessoaVO) obj;
 
-        if (!id.equals(pessoa.id)) return false;
+        if (!key.equals(pessoa.key)) return false;
         if (!nome.equals(pessoa.nome)) return false;
         if (!sobrenome.equals(pessoa.sobrenome)) return false;
         if (!endereco.equals(pessoa.endereco)) return false;
@@ -72,7 +75,7 @@ public class PessoaVO implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = key.hashCode();
         result = 31 * result + nome.hashCode();
         result = 31 * result + sobrenome.hashCode();
         result = 31 * result + endereco.hashCode();
