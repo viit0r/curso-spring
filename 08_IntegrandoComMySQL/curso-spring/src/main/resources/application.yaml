@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/curso_spring_db?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: viit0r
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      show-sql: false
+      hibernate:
+        dialect: org.hibernate.dialect.MYSQL8Dialect
