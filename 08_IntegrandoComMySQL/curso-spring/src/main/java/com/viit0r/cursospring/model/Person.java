@@ -1,15 +1,29 @@
 package com.viit0r.cursospring.model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
+@Entity
+@Table(name = "pessoa")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "primeiro_nome", nullable = false, length = 80)
     private String primeiroNome;
+
+    @Column(name = "ultimo_nome", nullable = false, length = 80)
     private String ultimoNome;
+
+    @Column(nullable = false, length = 100)
     private String endereco;
+
+    @Column(nullable = false, length = 6)
     private String genero;
 
     public Person() {
