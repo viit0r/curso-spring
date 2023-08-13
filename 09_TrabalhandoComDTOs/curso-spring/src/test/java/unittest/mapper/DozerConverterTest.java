@@ -1,7 +1,7 @@
 package unittest.mapper;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
-import com.viit0r.cursospring.mapper.DozerMapper;
+import com.viit0r.cursospring.mapper.Mapper;
 import com.viit0r.cursospring.model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class DozerConverterTest {
 
     @Test
     public void parseEntityToDTOTest() {
-        PersonDTO output = DozerMapper.parseObject(inputObject.mockEntity(), PersonDTO.class);
+        PersonDTO output = Mapper.parseObject(inputObject.mockEntity(), PersonDTO.class);
         assertEquals(Long.valueOf(0L), output.getId());
         assertEquals("First Name Test0", output.getPrimeiroNome());
         assertEquals("Last Name Test0", output.getUltimoNome());
@@ -32,7 +32,7 @@ public class DozerConverterTest {
 
     @Test
     public void parseEntityListToDTOListTest() {
-        List<PersonDTO> outputList = DozerMapper.parseListObjects(inputObject.mockEntityList(), PersonDTO.class);
+        List<PersonDTO> outputList = Mapper.parseListObjects(inputObject.mockEntityList(), PersonDTO.class);
         PersonDTO outputZero = outputList.get(0);
         
         assertEquals(Long.valueOf(0L), outputZero.getId());
@@ -60,7 +60,7 @@ public class DozerConverterTest {
 
     @Test
     public void parseDTOToEntityTest() {
-        Person output = DozerMapper.parseObject(inputObject.mockDTO(), Person.class);
+        Person output = Mapper.parseObject(inputObject.mockDTO(), Person.class);
         assertEquals(Long.valueOf(0L), output.getId());
         assertEquals("First Name Test0", output.getPrimeiroNome());
         assertEquals("Last Name Test0", output.getUltimoNome());
@@ -70,7 +70,7 @@ public class DozerConverterTest {
 
     @Test
     public void parserDTOListToEntityListTest() {
-        List<Person> outputList = DozerMapper.parseListObjects(inputObject.mockDTOList(), Person.class);
+        List<Person> outputList = Mapper.parseListObjects(inputObject.mockDTOList(), Person.class);
         Person outputZero = outputList.get(0);
         
         assertEquals(Long.valueOf(0L), outputZero.getId());

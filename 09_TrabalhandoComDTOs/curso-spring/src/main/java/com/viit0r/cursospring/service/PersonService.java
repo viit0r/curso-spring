@@ -2,7 +2,7 @@ package com.viit0r.cursospring.service;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
 import com.viit0r.cursospring.exception.ResourceNotFoundException;
-import com.viit0r.cursospring.mapper.DozerMapper;
+import com.viit0r.cursospring.mapper.Mapper;
 import com.viit0r.cursospring.model.Person;
 import com.viit0r.cursospring.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class PersonService {
     public List<PersonDTO> findAll() {
         logger.info("Buscando todas as pessoas...");
 
-        return DozerMapper.parseListObjects(personRepository.findAll(), PersonDTO.class);
+        return Mapper.parseListObjects(personRepository.findAll(), PersonDTO.class);
     }
 
     public PersonDTO findById(Long id) {
@@ -31,13 +31,13 @@ public class PersonService {
         Person personRetornada = personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Não foram encontrados registros para este ID!"));
 
-        return DozerMapper.parseObject(personRetornada, PersonDTO.class);
+        return Mapper.parseObject(personRetornada, PersonDTO.class);
     }
 
     public PersonDTO create(PersonDTO person) {
         logger.info("Criando uma pessoa...");
-        Person personCriada = DozerMapper.parseObject(person, Person.class);
-        return DozerMapper.parseObject(personRepository.save(personCriada), PersonDTO.class);
+        Person personCriada = Mapper.parseObject(person, Person.class);
+        return Mapper.parseObject(personRepository.save(personCriada), PersonDTO.class);
     }
 
     public PersonDTO update(PersonDTO person) {
@@ -51,7 +51,7 @@ public class PersonService {
         personRecuperada.setEndereco(person.getEndereco());
         personRecuperada.setGenero(person.getGenero());
 
-        return DozerMapper.parseObject(personRepository.save(personRecuperada), PersonDTO.class);
+        return Mapper.parseObject(personRepository.save(personRecuperada), PersonDTO.class);
     }
 
     public void delete(Long id) {

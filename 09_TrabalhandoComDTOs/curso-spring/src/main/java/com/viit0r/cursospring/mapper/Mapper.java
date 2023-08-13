@@ -1,14 +1,13 @@
 package com.viit0r.cursospring.mapper;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
+import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DozerMapper {
+public class Mapper {
 
-    private static final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    private static final ModelMapper mapper = new ModelMapper();
 
     public static <Origem, Destino> Destino parseObject(Origem origem, Class<Destino> destino) {
         return mapper.map(origem, destino);
