@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DozerMapper {
 
-    private static Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    private static final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 
     public static <Origem, Destino> Destino parseObject(Origem origem, Class<Destino> destino) {
         return mapper.map(origem, destino);
