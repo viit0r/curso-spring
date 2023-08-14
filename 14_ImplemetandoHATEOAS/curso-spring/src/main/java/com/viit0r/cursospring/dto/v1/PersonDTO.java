@@ -1,12 +1,18 @@
 package com.viit0r.cursospring.dto.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 
-public class PersonDTO implements Serializable {
+@JsonPropertyOrder({"id", "primeiroNome", "ultimoNome", "endereco", "genero"})
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    @JsonProperty("id")
+    private Long idPerson;
     private String primeiroNome;
     private String ultimoNome;
     private String endereco;
@@ -15,12 +21,12 @@ public class PersonDTO implements Serializable {
     public PersonDTO() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdPerson() {
+        return idPerson;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdPerson(Long idPerson) {
+        this.idPerson = idPerson;
     }
 
     public String getPrimeiroNome() {

@@ -23,7 +23,7 @@ public class DozerConverterTest {
     @Test
     public void parseEntityToDTOTest() {
         PersonDTO output = Mapper.parseObject(inputObject.mockEntity(), PersonDTO.class);
-        assertEquals(Long.valueOf(0L), output.getId());
+        assertEquals(Long.valueOf(0L), output.getIdPerson());
         assertEquals("First Name Test0", output.getPrimeiroNome());
         assertEquals("Last Name Test0", output.getUltimoNome());
         assertEquals("Addres Test0", output.getEndereco());
@@ -35,7 +35,7 @@ public class DozerConverterTest {
         List<PersonDTO> outputList = Mapper.parseListObjects(inputObject.mockEntityList(), PersonDTO.class);
         PersonDTO outputZero = outputList.get(0);
         
-        assertEquals(Long.valueOf(0L), outputZero.getId());
+        assertEquals(Long.valueOf(0L), outputZero.getIdPerson());
         assertEquals("First Name Test0", outputZero.getPrimeiroNome());
         assertEquals("Last Name Test0", outputZero.getUltimoNome());
         assertEquals("Addres Test0", outputZero.getEndereco());
@@ -43,7 +43,7 @@ public class DozerConverterTest {
         
         PersonDTO outputSeven = outputList.get(7);
         
-        assertEquals(Long.valueOf(7L), outputSeven.getId());
+        assertEquals(Long.valueOf(7L), outputSeven.getIdPerson());
         assertEquals("First Name Test7", outputSeven.getPrimeiroNome());
         assertEquals("Last Name Test7", outputSeven.getUltimoNome());
         assertEquals("Addres Test7", outputSeven.getEndereco());
@@ -51,7 +51,7 @@ public class DozerConverterTest {
         
         PersonDTO outputTwelve = outputList.get(12);
         
-        assertEquals(Long.valueOf(12L), outputTwelve.getId());
+        assertEquals(Long.valueOf(12L), outputTwelve.getIdPerson());
         assertEquals("First Name Test12", outputTwelve.getPrimeiroNome());
         assertEquals("Last Name Test12", outputTwelve.getUltimoNome());
         assertEquals("Addres Test12", outputTwelve.getEndereco());
