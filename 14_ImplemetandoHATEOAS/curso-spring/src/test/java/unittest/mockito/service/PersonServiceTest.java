@@ -1,6 +1,7 @@
 package unittest.mockito.service;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
+import com.viit0r.cursospring.exception.RequiredObjectIsNullException;
 import com.viit0r.cursospring.model.Person;
 import com.viit0r.cursospring.repository.PersonRepository;
 import com.viit0r.cursospring.service.PersonService;
@@ -115,5 +116,31 @@ public class PersonServiceTest {
                 .thenReturn(Optional.of(person));   // Deve retornar um optional de person
 
         service.delete(1L);
+    }
+
+    @Test
+    void testCreateComPersonNulo() {
+        String sMensagemEsperada = "Não é permitido persistir um objeto nulo!";
+
+        Exception exception = assertThrows(RequiredObjectIsNullException.class, () -> {
+            service.create(null);
+        });
+
+        String sMensagemRetornada = exception.getMessage();
+
+        assertTrue(sMensagemRetornada.contains(sMensagemEsperada));
+    }
+
+    @Test
+    void testUpdateComPersonNulo() {
+        String sMensagemEsperada = "Não é permitido persistir um objeto nulo!";
+
+        Exception exception = assertThrows(RequiredObjectIsNullException.class, () -> {
+            service.update(null);
+        });
+
+        String sMensagemRetornada = exception.getMessage();
+
+        assertTrue(sMensagemRetornada.contains(sMensagemEsperada));
     }
 }

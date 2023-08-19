@@ -2,6 +2,7 @@ package com.viit0r.cursospring.service;
 
 import com.viit0r.cursospring.controller.PersonController;
 import com.viit0r.cursospring.dto.v1.PersonDTO;
+import com.viit0r.cursospring.exception.RequiredObjectIsNullException;
 import com.viit0r.cursospring.exception.ResourceNotFoundException;
 import com.viit0r.cursospring.mapper.Mapper;
 import com.viit0r.cursospring.model.Person;
@@ -46,6 +47,9 @@ public class PersonService {
     }
 
     public PersonDTO create(PersonDTO person) {
+        if(person == null)
+            throw new RequiredObjectIsNullException();
+
         logger.info("Criando uma pessoa...");
         Person personCriada = Mapper.parseObject(person, Person.class);
 
@@ -59,6 +63,9 @@ public class PersonService {
     }
 
     public PersonDTO update(PersonDTO person) {
+        if(person == null)
+            throw new RequiredObjectIsNullException();
+
         logger.info("Atualizando uma pessoa...");
 
         Person personRecuperada = personRepository.findById(person.getIdPerson())
