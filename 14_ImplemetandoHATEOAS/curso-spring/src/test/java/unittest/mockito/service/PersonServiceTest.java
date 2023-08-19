@@ -9,13 +9,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.AdditionalAnswers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import unittest.mapper.mock.MockPerson;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -142,5 +142,48 @@ public class PersonServiceTest {
         String sMensagemRetornada = exception.getMessage();
 
         assertTrue(sMensagemRetornada.contains(sMensagemEsperada));
+    }
+
+    @Test
+    void testFindAll() {
+        List<Person> listPessoas = input.mockEntityList();
+
+        when(personRepository.findAll())         // Quando buscar todas as pessoas
+                .thenReturn(listPessoas);   // Deve retornar o mock com todas as pessoas
+
+        List<PersonDTO> resultado = service.findAll();
+
+        assertNotNull(resultado);
+        assertEquals(14, resultado.size());
+
+        PersonDTO primeiraPessoa = resultado.get(1);
+        assertNotNull(primeiraPessoa);
+        assertNotNull(primeiraPessoa.getIdPerson());
+        assertNotNull(primeiraPessoa.getLinks());
+        assertTrue(resultado.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
+        assertEquals("First Name Test1", primeiraPessoa.getPrimeiroNome());
+        assertEquals("Last Name Test1", primeiraPessoa.getUltimoNome());
+        assertEquals("Addres Test1", primeiraPessoa.getEndereco());
+        assertEquals("Female", primeiraPessoa.getGenero());
+
+        PersonDTO quartaPessoa = resultado.get(4);
+        assertNotNull(quartaPessoa);
+        assertNotNull(quartaPessoa.getIdPerson());
+        assertNotNull(quartaPessoa.getLinks());
+        assertTrue(resultado.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
+        assertEquals("First Name Test4", quartaPessoa.getPrimeiroNome());
+        assertEquals("Last Name Test4", quartaPessoa.getUltimoNome());
+        assertEquals("Addres Test4", quartaPessoa.getEndereco());
+        assertEquals("Male", quartaPessoa.getGenero());
+
+        PersonDTO setimaPessoa = resultado.get(7);
+        assertNotNull(setimaPessoa);
+        assertNotNull(setimaPessoa.getIdPerson());
+        assertNotNull(setimaPessoa.getLinks());
+        assertTrue(resultado.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
+        assertEquals("First Name Test7", setimaPessoa.getPrimeiroNome());
+        assertEquals("Last Name Test7", setimaPessoa.getUltimoNome());
+        assertEquals("Addres Test7", setimaPessoa.getEndereco());
+        assertEquals("Female", setimaPessoa.getGenero());
     }
 }
