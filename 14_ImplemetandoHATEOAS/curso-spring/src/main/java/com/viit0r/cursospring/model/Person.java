@@ -3,6 +3,7 @@ package com.viit0r.cursospring.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pessoa")
@@ -67,5 +68,18 @@ public class Person implements Serializable {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) && Objects.equals(primeiroNome, person.primeiroNome) && Objects.equals(ultimoNome, person.ultimoNome) && Objects.equals(endereco, person.endereco) && Objects.equals(genero, person.genero);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, primeiroNome, ultimoNome, endereco, genero);
     }
 }

@@ -49,7 +49,9 @@ public class PersonService {
         logger.info("Criando uma pessoa...");
         Person personCriada = Mapper.parseObject(person, Person.class);
 
-        PersonDTO personDTO = Mapper.parseObject(personRepository.save(personCriada), PersonDTO.class);
+        Person teste = personRepository.save(personCriada);
+
+        PersonDTO personDTO = Mapper.parseObject(teste, PersonDTO.class);
 
         //Adicionando HATEOAS
         personDTO.add(linkTo(methodOn(PersonController.class).findById(personDTO.getIdPerson())).withSelfRel());
