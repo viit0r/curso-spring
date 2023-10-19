@@ -14,7 +14,7 @@ public class BooksDTO extends RepresentationModel<BooksDTO> implements Serializa
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("id")
-    private long idBook;
+    private Long idBooks;
 
     private String autor;
 
@@ -27,12 +27,12 @@ public class BooksDTO extends RepresentationModel<BooksDTO> implements Serializa
     public BooksDTO() {
     }
 
-    public long getIdBook() {
-        return idBook;
+    public long getIdBooks() {
+        return idBooks;
     }
 
-    public void setIdBook(long idBook) {
-        this.idBook = idBook;
+    public void setIdBooks(long idBooks) {
+        this.idBooks = idBooks;
     }
 
     public String getAutor() {

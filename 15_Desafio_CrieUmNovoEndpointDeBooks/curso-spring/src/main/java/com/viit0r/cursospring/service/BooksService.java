@@ -29,7 +29,7 @@ public class BooksService {
         List<BooksDTO> livrosDTO = Mapper.parseListObjects(booksRepository.findAll(), BooksDTO.class);
 
         //Adicionando HATEOAS em cada item da lista
-        livrosDTO.forEach(livro -> livro.add(linkTo(methodOn(BooksController.class).findById(livro.getIdBook())).withSelfRel()));
+        livrosDTO.forEach(livro -> livro.add(linkTo(methodOn(BooksController.class).findById(livro.getIdBooks())).withSelfRel()));
         return livrosDTO;
     }
 
@@ -58,7 +58,7 @@ public class BooksService {
         BooksDTO BooksDTO = Mapper.parseObject(teste, BooksDTO.class);
 
         //Adicionando HATEOAS
-        BooksDTO.add(linkTo(methodOn(BooksController.class).findById(BooksDTO.getIdBook())).withSelfRel());
+        BooksDTO.add(linkTo(methodOn(BooksController.class).findById(BooksDTO.getIdBooks())).withSelfRel());
         return BooksDTO;
     }
 
@@ -68,7 +68,7 @@ public class BooksService {
 
         logger.info("Atualizando um livro...");
 
-        Books livroRecuperado = booksRepository.findById(livro.getIdBook())
+        Books livroRecuperado = booksRepository.findById(livro.getIdBooks())
                 .orElseThrow(() -> new ResourceNotFoundException("Não foram encontrados registros para este ID!"));
 
         livroRecuperado.setAutor(livro.getAutor());
@@ -79,7 +79,7 @@ public class BooksService {
         BooksDTO BooksDTO = Mapper.parseObject(booksRepository.save(livroRecuperado), BooksDTO.class);
 
         //Adicionando HATEOAS
-        BooksDTO.add(linkTo(methodOn(BooksController.class).findById(BooksDTO.getIdBook())).withSelfRel());
+        BooksDTO.add(linkTo(methodOn(BooksController.class).findById(BooksDTO.getIdBooks())).withSelfRel());
         return BooksDTO;
     }
 
