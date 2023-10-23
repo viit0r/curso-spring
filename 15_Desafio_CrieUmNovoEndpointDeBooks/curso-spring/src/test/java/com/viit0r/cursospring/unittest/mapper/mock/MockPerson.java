@@ -1,4 +1,4 @@
-package unittest.mapper.mock;
+package com.viit0r.cursospring.unittest.mapper.mock;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
 import com.viit0r.cursospring.model.Person;

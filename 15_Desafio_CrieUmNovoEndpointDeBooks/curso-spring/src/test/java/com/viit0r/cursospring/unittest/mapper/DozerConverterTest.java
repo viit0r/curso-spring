@@ -1,11 +1,11 @@
-package unittest.mapper;
+package com.viit0r.cursospring.unittest.mapper;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
 import com.viit0r.cursospring.mapper.Mapper;
 import com.viit0r.cursospring.model.Person;
+import com.viit0r.cursospring.unittest.mapper.mock.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import unittest.mapper.mock.MockPerson;
 
 import java.util.List;
 

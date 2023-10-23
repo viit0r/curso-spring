@@ -1,10 +1,11 @@
-package unittest.mockito.service;
+package com.viit0r.cursospring.unittest.mockito.service;
 
 import com.viit0r.cursospring.dto.v1.PersonDTO;
 import com.viit0r.cursospring.exception.RequiredObjectIsNullException;
 import com.viit0r.cursospring.model.Person;
 import com.viit0r.cursospring.repository.PersonRepository;
 import com.viit0r.cursospring.service.PersonService;
+import com.viit0r.cursospring.unittest.mapper.mock.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -13,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import unittest.mapper.mock.MockPerson;
 
 import java.util.List;
 import java.util.Optional;
