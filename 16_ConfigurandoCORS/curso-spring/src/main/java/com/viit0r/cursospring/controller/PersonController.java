@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@CrossOrigin
+/* Esta forma habilita CORS para o Controller inteiro.
+Caso eu especifique um IP e/ou host, somente este IP/host conseguirá acessar a nossa API */
 @RestController
 @RequestMapping("/api/person/v1")
 @Tag(name = "People", description = "Endpoints para gerenciamento das pessoas do sistema")
@@ -47,6 +50,7 @@ public class PersonController {
         return personService.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080") /* Esta forma habilita CORS somente para este endpoint. */
     @GetMapping(value = "/{id}",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     //ANOTAÇÃO DO SWAGGER PARA DOC
@@ -65,6 +69,7 @@ public class PersonController {
         return personService.findById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080") /* Esta forma habilita CORS somente para este endpoint. */
     @PostMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
